@@ -1,0 +1,76 @@
+spring:
+  config:
+    import: core.yml
+  profiles:
+    #    default: default
+    #    active: "ohw"
+    group:
+      default: core, default
+      ohw: core, ohw
+      jhc: core, jhc
+      dev: core, dev
+      prod: core, prod
+      lbm: core, lbm
+
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/connection1
+    username: root
+    password: 1111
+    hikari:
+      auto-commit: true
+      minimum-idle: 5
+      maximum-pool-size: 10
+      connection-timeout: 5000
+      connection-test-query: select 1
+      data-source-properties:
+        useServerPrepStmts: false
+        rewriteBatchedStatements: true
+
+  connection2-datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/connection2
+    username: root
+    password: 1111
+    hikari:
+      auto-commit: true
+      minimum-idle: 5
+      maximum-pool-size: 10
+      connection-timeout: 5000
+      connection-test-query: select 1
+      data-source-properties:
+        useServerPrepStmts: false
+        rewriteBatchedStatements: true
+
+  connection3-datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/connection3
+    username: root
+    password: 1111
+    hikari:
+      auto-commit: true
+      minimum-idle: 5
+      maximum-pool-size: 10
+      connection-timeout: 5000
+      connection-test-query: select 1
+      data-source-properties:
+        useServerPrepStmts: false
+        rewriteBatchedStatements: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true

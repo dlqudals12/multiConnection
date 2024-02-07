@@ -1,26 +1,17 @@
 spring:
-  config:
-    import: core.yml
-  profiles:
-    #    default: default
-    #    active: "ohw"
-    group:
-      default: core, default
-      ohw: core, ohw
-      jhc: core, jhc
-      dev: core, dev
-      prod: core, prod
-      lbm: core, lbm
-
   output:
     ansi:
       enabled: always
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/connection1
     username: root
-    password: 1111
+    password: 1234
     hikari:
       auto-commit: true
       minimum-idle: 5
@@ -35,7 +26,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/connection2
     username: root
-    password: 1111
+    password: 1234
     hikari:
       auto-commit: true
       minimum-idle: 5
@@ -50,7 +41,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/connection3
     username: root
-    password: 1111
+    password: 1234
     hikari:
       auto-commit: true
       minimum-idle: 5
@@ -63,14 +54,17 @@ spring:
 
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
-    generate-ddl: false
+    generate-ddl: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
-        show_sql: false
+        show_sql: true
         format_sql: true
         highlight_sql: true
         use_sql_comments: true
+
+logging.level:
+  org.hibernate.SQL: debug

@@ -28,13 +28,13 @@ import java.util.Objects;
 public class Connection3DataSourceConfig {
 
     @Bean
-    @ConfigurationProperties("spring.datasource")
+    @ConfigurationProperties("spring.connection3-datasource")
     public DataSourceProperties connection3DataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.configuration")
+    @ConfigurationProperties("spring.connection3-datasource.configuration")
     public DataSource connection3Datasource() {
         return connection3DataSourceProperties()
                 .initializeDataSourceBuilder()
